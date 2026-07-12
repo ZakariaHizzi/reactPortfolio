@@ -28,7 +28,7 @@ const projects = [
       "A premium travel destination discovery and booking platform built with Next.js, Supabase, and Tailwind CSS.",
     title: "Wanderlust",
     github: "https://github.com/ZakariaHizzi/traveling-web-site",
-    live: "https://reacttraveling.vercel.app/destinations/kyoto-japan",
+    live: "https://reacttraveling.vercel.app/",
     tags: ["#NextJS", "#Supabase", "#Tailwind"],
   },
   {
