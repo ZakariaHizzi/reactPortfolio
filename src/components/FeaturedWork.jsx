@@ -56,11 +56,11 @@ const projects = [
     id: 6,
     img: img6,
     description:
-      "A modern healthcare platform that connects patients with world-class specialists. Find doctors, book appointments instantly, manage health records, and track treatment progress all in one place.",
+      "A full-stack medical appointment booking application with a Node.js/Express backend and a Next.js frontend. Patients can browse doctors by specialty, view doctor profiles, and book appointments. Doctors/providers can manage their appointments and update statuses.",
     title: "HealSync",
     github: "https://github.com/ZakariaHizzi/dooctor-app",
-    live: "https://dooctor-app-three.vercel.app/",
-    tags: ["#NextJS", "#Supabase", "#Tailwind"],
+    live: "https://booking-doctor-nodenexts.vercel.app/",
+    tags: ["#NextJS", "#NodeJS", "#Tailwind", "#express"],
   },
 ];
 

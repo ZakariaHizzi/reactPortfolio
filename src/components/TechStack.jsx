@@ -5,6 +5,9 @@ import strapi from "../assets/strapi-icon-svgrepo-com.svg";
 import next from "../imgicons/nextjs-icon-svgrepo-com.svg";
 import tailwind from "../imgicons/tailwindcss.svg";
 import sb from "../imgicons/icons8-supabase.svg";
+import node from "../imgicons/Node.js_logo.svg";
+import ep from "../imgicons/express-js-icon.svg";
+
 const techStack = [
   { icon: next, label: "Nextjs", color: "text-orange-500" },
   { icon: css, label: "CSS3", color: "text-blue-500" },
@@ -12,6 +15,8 @@ const techStack = [
   { icon: react, label: "React", color: "text-cyan-400" },
   { icon: tailwind, label: "Tailwind", color: "text-cyan-300" },
   { icon: sb, label: "Supabase", color: "text-emerald-500" },
+  { icon: node, label: "nodeJS", color: "text-emerald-500" },
+  { icon: ep, label: "expressJS", color: "text-emerald-500" },
 ];
 
 export default function TechStack() {
