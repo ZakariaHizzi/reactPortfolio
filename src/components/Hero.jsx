@@ -24,7 +24,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="font-body-lg text-[18px] leading-[1.6] text-on-surface-variant mb-10 max-w-2xl mx-auto lg:mx-0"
           >
-            Freelance Full-Stack Developer specializing in high-performance web
+            Full-Stack Developer specializing in high-performance web
             applications, modern architectures, and pixel-perfect UI
             engineering.
           </motion.p>
@@ -58,21 +58,36 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="w-full lg:w-1/3 flex justify-center lg:justify-end shrink-0"
         >
-          <div className="relative w-[290px] sm:w-[320px] lg:w-[360px]">
+          <div className="relative w-[280px] sm:w-[320px] lg:w-[360px]">
             {/* Glow behind */}
             <div className="absolute -inset-4 rounded-[32px] opacity-40 blur-2xl pointer-events-none" />
             {/* Card frame */}
             <div className="relative rounded-[24px] p-[1px] ">
-              <div className="relative rounded-[23px] overflow-hidden">
+              <div className="relative rounded-[23px] overflow-hidden  ">
                 <img
                   src={meImg}
                   alt="Portrait"
                   className="w-full aspect-[4/4] object-cover object-top"
                 />
                 {/* subtle bottom gradient for blend */}
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#020617]/80 to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 h-24 " />
               </div>
             </div>
+
+            {/* Floating badge */}
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -bottom-5 left-1/2 -translate-x-1/2 sm:left-6 sm:translate-x-0 glass border border-cyan-400/20 rounded-full px-4 py-2 flex items-center gap-2 whitespace-nowrap shadow-[0_0_20px_rgba(34,211,238,0.15)]"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400" />
+              </span>
+              <span className="font-label-mono text-[13px] text-on-surface">
+                Open to work
+              </span>
+            </motion.div>
           </div>
         </motion.div>
       </div>

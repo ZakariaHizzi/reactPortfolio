@@ -31,16 +31,7 @@ const projects = [
     live: "https://reacttraveling.vercel.app/",
     tags: ["#NextJS", "#Supabase", "#Tailwind"],
   },
-  {
-    id: 3,
-    img: img3,
-    description:
-      "A luxury real estate marketplace built with React. Showcases high-end properties from French Riviera estates to Manhattan penthouses with a polished editorial aesthetic.",
-    title: "LuxeSpace",
-    github: "https://github.com/ZakariaHizzi/estate-react-website",
-    live: "https://reactestatewebsite.netlify.app/",
-    tags: ["#ReactJS", , "#Tailwind"],
-  },
+
   {
     id: 4,
     img: img4,
@@ -49,7 +40,7 @@ const projects = [
     title: "NEON BISTRO",
     github: "https://github.com/ZakariaHizzi/react-resturant",
     live: "https://react-resturant2.netlify.app/",
-    tags: ["#ReactJS", "#Tailwind"],
+    tags: ["#ReactJS", "#Tailwind", "#NodeJS"],
   },
 
   {
