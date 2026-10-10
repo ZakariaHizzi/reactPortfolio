@@ -18,7 +18,7 @@ const projects = [
       "A modern e-commerce web application built with React 19, featuring product browsing, shopping cart management, and user authentication.",
     title: "Ecommerce Website",
     github: "https://github.com/ZakariaHizzi/react-ecommerce-website",
-    live: "https://chic-peony-ebef32.netlify.app/",
+    live: "https://ecommerce-website-60.netlify.app/",
     tags: ["#ReactJS", "#Tailwind"],
   },
   {
@@ -38,8 +38,8 @@ const projects = [
     description:
       "A futuristic cyberpunk-themed restaurant website with immersive visual effects, online menu browsing, and table reservation functionality.",
     title: "NEON BISTRO",
-    github: "https://github.com/ZakariaHizzi/react-resturant",
-    live: "https://react-resturant2.netlify.app/",
+    github: "https://github.com/ZakariaHizzi/fullstackrestarant",
+    live: "https://fullstackrestarant.vercel.app/",
     tags: ["#ReactJS", "#Tailwind", "#NodeJS"],
   },
 
