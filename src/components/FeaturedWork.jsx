@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import img1 from "../works/portfolio1.PNG";
 import img2 from "../works/portfolio2.PNG";
 import img4 from "../works/portfolio4.PNG";
 import img6 from "../works/portfolio6.PNG";
+import imgUniversity from "../works/UniversityShotsCover.png";
 
 const projects = [
   {
@@ -42,6 +46,16 @@ const projects = [
   },
 
   {
+    id: 5,
+    img: imgUniversity,
+    description:
+      "A full-stack university platform combining a public campus website with a secure, role-based academic portal for students, faculty, and administrators. Includes admissions, degree catalog, timetables, and a faculty gradebook.",
+    title: "Veritas University",
+    github: "https://github.com/ZakariaHizzi/academy-paltforme",
+    tags: ["#NextJS", "#NodeJS", "#MongoDB", "#Tailwind"],
+  },
+
+  {
     id: 6,
     img: img6,
     description:
@@ -58,7 +72,7 @@ function ProjectCard({ project }) {
 
   return (
     <div className="glass rounded-[0.25rem] border border-slate-800 hover:border-cyan-400 transition-all duration-300 group overflow-hidden flex flex-col h-full">
-      <div className="h-48 w-full bg-slate-900 relative overflow-hidden">
+      <div className="aspect-[4/3] w-full bg-slate-900 relative overflow-hidden">
         <img
           src={project.img}
           alt={project.title}
@@ -93,20 +107,26 @@ function ProjectCard({ project }) {
           ))}
         </div>
         <div className="flex gap-4 mt-auto">
-          <a
-            className="btn-ghost px-4 py-2 rounded font-label-mono text-[12px] flex-1 text-center"
-            href={project.live}
-            target="_blank"
-          >
-            Live Demo
-          </a>
-          <a
-            className="btn-ghost px-4 py-2 rounded font-label-mono text-[12px] flex-1 text-center"
-            href={project.github}
-            target="_blank"
-          >
-            GitHub
-          </a>
+          {project.live && (
+            <a
+              className="btn-ghost px-4 py-2 rounded font-label-mono text-[12px] flex-1 text-center"
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Live Demo
+            </a>
+          )}
+          {project.github && (
+            <a
+              className="btn-ghost px-4 py-2 rounded font-label-mono text-[12px] flex-1 text-center"
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+          )}
         </div>
       </div>
     </div>
@@ -116,23 +136,50 @@ function ProjectCard({ project }) {
 export default function FeaturedWork() {
   return (
     <section className="px-[32px] max-w-[1280px] mx-auto mb-[128px]" id="work">
-      <h2 className="font-headline-md text-[32px] leading-[1.2] tracking-[-0.02em] font-[700] text-primary mb-12 flex items-center gap-4">
-        <span className="w-8 h-px bg-primary" />
-        Featured Work
-      </h2>
+      <div className="flex items-center justify-between mb-12">
+        <h2 className="font-headline-md text-[32px] leading-[1.2] tracking-[-0.02em] font-[700] text-primary flex items-center gap-4">
+          <span className="w-8 h-px bg-primary" />
+          Featured Work
+        </h2>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            aria-label="Previous project"
+            className="work-prev w-10 h-10 rounded border border-slate-800 text-on-surface flex items-center justify-center hover:border-cyan-400 hover:text-cyan-400 transition-colors cursor-pointer"
+          >
+            <FiChevronLeft size={20} />
+          </button>
+          <button
+            type="button"
+            aria-label="Next project"
+            className="work-next w-10 h-10 rounded border border-slate-800 text-on-surface flex items-center justify-center hover:border-cyan-400 hover:text-cyan-400 transition-colors cursor-pointer"
+          >
+            <FiChevronRight size={20} />
+          </button>
+        </div>
+      </div>
       <Swiper
-        modules={[Autoplay]}
+        modules={[Autoplay, Navigation, Pagination]}
         spaceBetween={24}
         slidesPerView={1}
         loop={true}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
+        navigation={{ prevEl: ".work-prev", nextEl: ".work-next" }}
+        pagination={{ clickable: true }}
         breakpoints={{
           640: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
         }}
+        style={{
+          "--swiper-navigation-color": "#22d3ee",
+          "--swiper-pagination-color": "#22d3ee",
+          "--swiper-pagination-bullet-inactive-color": "#64748b",
+          "--swiper-pagination-bullet-inactive-opacity": "0.6",
+        }}
+        className="!pb-12"
       >
         {projects.map((project) => (
-          <SwiperSlide key={project.id}>
+          <SwiperSlide key={project.id} className="!h-auto">
             <ProjectCard project={project} />
           </SwiperSlide>
         ))}
