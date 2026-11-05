@@ -5,9 +5,7 @@ import "swiper/css";
 
 import img1 from "../works/portfolio1.PNG";
 import img2 from "../works/portfolio2.PNG";
-import img3 from "../works/portfolio3.PNG";
 import img4 from "../works/portfolio4.PNG";
-import img5 from "../works/portfolio5.PNG";
 import img6 from "../works/portfolio6.PNG";
 
 const projects = [

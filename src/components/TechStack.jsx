@@ -1,7 +1,6 @@
 import css from "../imgicons/css3.svg";
 import js from "../imgicons/javascript.svg";
 import react from "../imgicons/react.svg";
-import strapi from "../assets/strapi-icon-svgrepo-com.svg";
 import next from "../imgicons/nextjs-icon-svgrepo-com.svg";
 import tailwind from "../imgicons/tailwindcss.svg";
 import sb from "../imgicons/icons8-supabase.svg";
