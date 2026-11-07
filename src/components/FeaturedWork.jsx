@@ -29,7 +29,7 @@ const projects = [
     description:
       "A premium travel destination discovery and booking platform built with Next.js, Supabase, and Tailwind CSS.",
     title: "Wanderlust",
-    github: "https://github.com/ZakariaHizzi/traveling-web-site",
+    github: "https://github.com/ZakariaHizzi/reacttraveling",
     live: "https://reacttraveling.vercel.app/",
     tags: ["#NextJS", "#Supabase", "#Tailwind"],
   },
@@ -62,7 +62,7 @@ const projects = [
     description:
       "A full-stack medical appointment booking application with a Node.js/Express backend and a Next.js frontend. Patients can browse doctors by specialty, view doctor profiles, and book appointments. Doctors/providers can manage their appointments and update statuses.",
     title: "HealSync",
-    github: "https://github.com/ZakariaHizzi/dooctor-app",
+    github: "https://github.com/ZakariaHizzi/booking-doctor-nodenexts",
     live: "https://booking-doctor-nodenexts.vercel.app/",
     tags: ["#NextJS", "#NodeJS", "#Tailwind", "#express"],
   },
