@@ -60,13 +60,6 @@ export default function Navbar() {
           <div className="flex flex-col gap-4 font-body-md text-body-md">
             <a
               className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
-              href="#work"
-              onClick={() => setMenuOpen(false)}
-            >
-              Work
-            </a>
-            <a
-              className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
               href="#services"
               onClick={() => setMenuOpen(false)}
             >
@@ -78,6 +71,13 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
             >
               Stack
+            </a>
+            <a
+              className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
+              href="#work"
+              onClick={() => setMenuOpen(false)}
+            >
+              Work
             </a>
             <a
               className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"

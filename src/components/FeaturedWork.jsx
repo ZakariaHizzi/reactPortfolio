@@ -52,6 +52,7 @@ const projects = [
       "A full-stack university platform combining a public campus website with a secure, role-based academic portal for students, faculty, and administrators. Includes admissions, degree catalog, timetables, and a faculty gradebook.",
     title: "Veritas University",
     github: "https://github.com/ZakariaHizzi/academy-paltforme",
+    live: "https://academy-paltforme-sfmv.vercel.app/",
     tags: ["#NextJS", "#NodeJS", "#MongoDB", "#Tailwind"],
   },
 
