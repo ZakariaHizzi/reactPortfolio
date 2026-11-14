@@ -1,93 +1,160 @@
 import { motion } from "framer-motion";
-import meImg from "../assets/me-nobg.png";
+
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
+const highlights = [
+  {
+    title: "Pixel-perfect UI",
+    description: "Interfaces that match the design down to the last pixel.",
+  },
+  {
+    title: "High-performance apps",
+    description: "Fast loads, smooth interactions and lean bundles.",
+  },
+  {
+    title: "Modern architecture",
+    description: "Clean, scalable code built to grow with your product.",
+  },
+];
 
 export default function Hero() {
   return (
     <section
-      className="min-h-[500px] flex flex-col justify-center px-[32px] max-w-[1280px] mx-auto mb-[128px] relative"
       id="hero"
+      className="relative mx-auto mb-[128px] flex min-h-[calc(100svh-8rem)] w-full max-w-[1280px] flex-col justify-center overflow-hidden px-[32px] py-12"
     >
-      <div className="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none" />
-      <div className="relative z-10 w-full flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
-        <div className="w-full lg:w-2/3 text-center lg:text-left">
+      {/* Background: glows + masked grid */}
+      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+        <div className="absolute -top-32 left-[18%] h-[420px] w-[420px] rounded-full bg-cyan-400/10 blur-[130px]" />
+        <div className="absolute right-0 top-10 h-[380px] w-[380px] rounded-full bg-indigo-500/10 blur-[130px]" />
+        <div className="absolute -left-24 bottom-0 h-[300px] w-[300px] rounded-full bg-indigo-500/[0.07] blur-[120px]" />
+        <div
+          className="absolute inset-0 opacity-50 [background-image:linear-gradient(to_right,rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.08)_1px,transparent_1px)] [background-size:56px_56px]"
+          style={{
+            maskImage:
+              "radial-gradient(ellipse 75% 65% at 50% 45%, black, transparent 78%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 75% 65% at 50% 45%, black, transparent 78%)",
+          }}
+        />
+      </div>
+
+      <div className="flex w-full flex-col items-center gap-14 lg:-translate-y-4 lg:flex-row lg:items-center lg:gap-12">
+        {/* Copy */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="w-full text-center lg:w-[56%] lg:text-left"
+        >
+          <motion.div variants={item} className="flex justify-center lg:justify-start">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/5 px-3.5 py-1.5 shadow-[0_0_20px_rgba(34,211,238,0.08)]">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
+              </span>
+              <span className="font-label-mono text-[11px] uppercase tracking-[0.2em] text-slate-300">
+                Available for new projects
+              </span>
+            </span>
+          </motion.div>
+
           <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-display-lg-mobile md:font-display-lg text-[40px] md:text-[64px] leading-[1.1] tracking-[-0.02em] md:tracking-[-0.04em] font-[800] text-on-surface mb-6 glow-text"
+            variants={item}
+            className="mt-7 text-balance font-display-lg text-[40px] leading-[1.05] tracking-[-0.03em] font-[800] text-on-surface md:text-[58px] lg:text-[64px]"
           >
-            Building Fast, Scalable, &amp; Beautiful Web Experiences.
+            Building{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent">
+              fast, scalable
+            </span>{" "}
+            &amp; beautiful web experiences.
           </motion.h1>
+
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="font-body-lg text-[18px] leading-[1.6] text-on-surface-variant mb-10 max-w-2xl mx-auto lg:mx-0"
+            variants={item}
+            className="mx-auto mt-7 max-w-xl text-pretty font-body-lg text-[17px] leading-[1.7] text-slate-400 lg:mx-0 lg:text-[18px]"
           >
             Full-Stack Developer specializing in high-performance web
             applications, modern architectures, and pixel-perfect UI
             engineering.
           </motion.p>
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            variants={item}
+            className="mt-9 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start"
           >
             <a
-              className="btn-primary px-8 py-3 rounded font-label-mono text-label-mono text-center flex items-center justify-center gap-2"
               href="#work"
+              className="group btn-primary inline-flex items-center justify-center gap-2 rounded px-8 py-3 font-label-mono text-label-mono"
             >
               View My Work
-              <span className="material-symbols-outlined text-[18px]">
+              <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-0.5">
                 arrow_forward
               </span>
             </a>
             <a
-              className="btn-ghost px-8 py-3 rounded font-label-mono text-label-mono text-center"
               href="#contact"
+              className="btn-ghost inline-flex items-center justify-center gap-2 rounded px-8 py-3 font-label-mono text-label-mono"
             >
-              Let's Chat
+              Let&apos;s Chat
+              <span className="material-symbols-outlined text-[18px]">
+                north_east
+              </span>
             </a>
           </motion.div>
-        </div>
+        </motion.div>
 
+        {/* Visual: three focus phrases */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="w-full lg:w-1/3 flex justify-center lg:justify-end shrink-0"
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="w-full lg:w-[44%]"
         >
-          <div className="relative w-[280px] sm:w-[320px] lg:w-[360px]">
-            {/* Glow behind */}
-            <div className="absolute -inset-4 rounded-[32px] opacity-40 blur-2xl pointer-events-none" />
-            {/* Card frame */}
-            <div className="relative rounded-[24px] p-[1px] ">
-              <div className="relative rounded-[23px] overflow-hidden  ">
-                <img
-                  src={meImg}
-                  alt="Portrait"
-                  className="w-full aspect-[4/4] object-cover object-top"
-                />
-                {/* subtle bottom gradient for blend */}
-                <div className="absolute inset-x-0 bottom-0 h-24 " />
-              </div>
-            </div>
-
-            {/* Floating badge */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-5 left-1/2 -translate-x-1/2 sm:left-6 sm:translate-x-0 glass border border-cyan-400/20 rounded-full px-4 py-2 flex items-center gap-2 whitespace-nowrap shadow-[0_0_20px_rgba(34,211,238,0.15)]"
+          <div className="mx-auto w-full max-w-[420px]">
+            <motion.p
+              variants={item}
+              className="mb-5 flex items-center gap-3 font-label-mono text-[10px] uppercase tracking-[0.24em] text-slate-500"
             >
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400" />
-              </span>
-              <span className="font-label-mono text-[13px] text-on-surface">
-                Open to work
-              </span>
-            </motion.div>
+              What I focus on
+              <span className="h-px flex-1 bg-gradient-to-r from-slate-700 to-transparent" />
+            </motion.p>
+
+            <div className="space-y-4">
+              {highlights.map((highlight, index) => (
+                <motion.div
+                  key={highlight.title}
+                  variants={item}
+                  className="group relative overflow-hidden rounded-xl border border-slate-800 bg-slate-900/40 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-400/40 hover:shadow-[0_12px_32px_-16px_rgba(34,211,238,0.45)]"
+                >
+                  {/* Accent bar + hover glow */}
+                  <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-cyan-400/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute -right-12 -top-12 h-28 w-28 rounded-full bg-cyan-400/10 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
+
+                  <div className="flex items-start gap-4">
+                    <span className="mt-0.5 font-label-mono text-[11px] tracking-widest text-cyan-400/80">
+                      0{index + 1}
+                    </span>
+                    <div>
+                      <h3 className="font-display-lg text-[17px] font-[700] leading-snug tracking-[-0.01em] text-on-surface">
+                        {highlight.title}
+                      </h3>
+                      <p className="mt-1.5 font-body-md text-[13.5px] leading-relaxed text-slate-400">
+                        {highlight.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

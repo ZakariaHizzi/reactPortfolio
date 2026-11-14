@@ -38,9 +38,21 @@ export default function Footer() {
           <div>
             <a
               href="#hero"
-              className="inline-flex items-baseline gap-1 font-display-lg text-[28px] font-[800] tracking-tighter text-on-surface"
+              aria-label="Zakaria Hizzi — home"
+              className="group inline-flex items-center gap-3"
             >
-              H.Z<span className="text-cyan-400">.</span>
+              {/* Name lockup */}
+              <span className="flex flex-col">
+                <span className="font-display-lg text-[24px] font-[800] leading-none tracking-[-0.02em] text-on-surface">
+                  Zakaria{" "}
+                  <span className="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+                    Hizzi
+                  </span>
+                </span>
+                <span className="mt-[7px] font-label-mono text-[10px] uppercase leading-none tracking-[0.26em] text-slate-400 transition-colors duration-300 group-hover:text-cyan-400">
+                  Full-Stack Developer
+                </span>
+              </span>
             </a>
             <p className="mt-4 max-w-sm font-body-md text-[15px] leading-[1.6] text-slate-400">
               Full-Stack Developer building fast, scalable &amp; beautiful web
@@ -118,7 +130,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-14 flex flex-col items-center justify-between gap-5 border-t border-slate-800/80 pt-7 sm:flex-row">
           <p className="font-label-mono text-[13px] text-slate-500">
-            &copy; {year} H.Z. All rights reserved.
+            &copy; {year} Zakaria Hizzi. All rights reserved.
           </p>
 
           <button

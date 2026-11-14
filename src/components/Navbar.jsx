@@ -7,10 +7,22 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full z-50 bg-surface-dim/60 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm shadow-primary/5">
       <div className="flex justify-between items-center w-full px-[32px] py-4 max-w-[1280px] mx-auto">
         <a
-          className="font-display-lg text-headline-md tracking-tighter text-primary"
-          href="#"
+          className="group flex items-center gap-3"
+          href="#hero"
+          aria-label="Zakaria Hizzi — home"
         >
-          H.Z
+          {/* Name lockup */}
+          <span className="flex flex-col">
+            <span className="font-display-lg text-[16px] font-[700] leading-none tracking-[-0.02em] text-on-surface transition-colors duration-300 sm:text-[17px]">
+              Zakaria{" "}
+              <span className="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+                Hizzi
+              </span>
+            </span>
+            <span className="mt-[6px] hidden font-label-mono text-[9px] uppercase leading-none tracking-[0.26em] text-slate-400 transition-colors duration-300 group-hover:text-cyan-400 sm:block">
+              Full-Stack Developer
+            </span>
+          </span>
         </a>
         <div className="hidden md:flex gap-[16px] items-center font-body-md text-body-md">
           <a
