@@ -104,7 +104,7 @@ export default function Hero() {
               href="#contact"
               className="btn-ghost inline-flex items-center justify-center gap-2 rounded px-8 py-3 font-label-mono text-label-mono"
             >
-              Let&apos;s Chat
+              Hire Me
               <span className="material-symbols-outlined text-[18px]">
                 north_east
               </span>

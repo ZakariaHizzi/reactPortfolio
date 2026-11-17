@@ -8,8 +8,8 @@ const LINKEDIN_URL = "https://www.linkedin.com/in/zakaria-hizzi-3234a9297/";
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Stack", href: "#stack" },
+  { label: "Process", href: "#process" },
   { label: "Work", href: "#work" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export default function Footer() {
@@ -122,7 +122,7 @@ export default function Footer() {
               href="#contact"
               className="btn-primary mt-6 inline-flex items-center justify-center gap-2 rounded px-6 py-2.5 font-label-mono text-[14px] uppercase tracking-widest"
             >
-              Let&apos;s Chat
+              Hire Me
             </a>
           </div>
         </div>

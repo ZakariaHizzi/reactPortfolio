@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight, FiExternalLink } from "react-icons/fi";
+import { FaGithub } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -68,24 +70,48 @@ const projects = [
   },
 ];
 
-function ProjectCard({ project }) {
+const linkClass =
+  "inline-flex flex-1 items-center justify-center gap-1.5 rounded border border-slate-700/80 px-3 py-2 font-label-mono text-[12px] text-slate-300 transition-all duration-300 hover:border-cyan-400 hover:text-cyan-400 hover:shadow-[0_0_14px_rgba(34,211,238,0.18)]";
+
+function ProjectCard({ project, index }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="glass rounded-[0.25rem] border border-slate-800 hover:border-cyan-400 transition-all duration-300 group overflow-hidden flex flex-col h-full">
-      <div className="aspect-[4/3] w-full bg-slate-900 relative overflow-hidden">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_28px_60px_-32px_rgba(34,211,238,0.5)]">
+      {/* Cover */}
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-900">
         <img
           src={project.img}
           alt={project.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent" />
+
+        <span className="absolute right-4 top-4 rounded-full border border-slate-700/60 bg-slate-950/70 px-2.5 py-1 font-label-mono text-[10px] tracking-[0.18em] text-slate-300 backdrop-blur-sm">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        <div className="absolute inset-x-0 bottom-0 p-5">
+          <div className="mb-2.5 flex flex-wrap gap-1.5">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-cyan-400/20 bg-slate-950/60 px-2 py-0.5 font-label-mono text-[10px] text-cyan-300/90 backdrop-blur-sm"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <h3 className="font-display-lg text-[19px] font-[700] leading-snug tracking-[-0.01em] text-white">
+            {project.title}
+          </h3>
+        </div>
       </div>
-      <div className="p-6 flex-1 flex flex-col">
-        <h3 className="font-body-lg text-[18px] leading-[1.6] text-on-surface font-bold mb-2">
-          {project.title}
-        </h3>
+
+      {/* Body */}
+      <div className="flex flex-1 flex-col p-5">
         <p
-          className={`font-body-md text-[16px] leading-[1.5] text-on-surface-variant mb-4 flex-1 ${
+          className={`font-body-md text-[14px] leading-relaxed text-slate-400 ${
             expanded ? "" : "line-clamp-2"
           }`}
         >
@@ -93,80 +119,110 @@ function ProjectCard({ project }) {
         </p>
         <button
           onClick={() => setExpanded(!expanded)}
-          className="text-cyan-400 text-[13px] font-label-mono mb-4 text-left hover:underline cursor-pointer"
+          className="mt-2 w-fit cursor-pointer font-label-mono text-[11px] text-cyan-400/90 transition-colors hover:text-cyan-300 hover:underline"
         >
           {expanded ? "Show less" : "Read more"}
         </button>
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-1 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-label-mono text-[12px]"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <div className="flex gap-4 mt-auto">
+
+        <div className="mt-auto flex gap-2 pt-5">
           {project.live && (
             <a
-              className="btn-ghost px-4 py-2 rounded font-label-mono text-[12px] flex-1 text-center"
+              className={linkClass}
               href={project.live}
               target="_blank"
               rel="noreferrer"
             >
+              <FiExternalLink className="text-[13px]" />
               Live Demo
             </a>
           )}
           {project.github && (
             <a
-              className="btn-ghost px-4 py-2 rounded font-label-mono text-[12px] flex-1 text-center"
+              className={linkClass}
               href={project.github}
               target="_blank"
               rel="noreferrer"
             >
-              GitHub
+              <FaGithub className="text-[13px]" />
+              Code
             </a>
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
 export default function FeaturedWork() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <section className="px-[32px] max-w-[1280px] mx-auto mb-[128px]" id="work">
-      <div className="flex items-center justify-between mb-12">
-        <h2 className="font-headline-md text-[32px] leading-[1.2] tracking-[-0.02em] font-[700] text-primary flex items-center gap-4">
-          <span className="w-8 h-px bg-primary" />
-          Featured Work
-        </h2>
-        <div className="flex gap-2">
-          <button
-            type="button"
-            aria-label="Previous project"
-            className="work-prev w-10 h-10 rounded border border-slate-800 text-on-surface flex items-center justify-center hover:border-cyan-400 hover:text-cyan-400 transition-colors cursor-pointer"
-          >
-            <FiChevronLeft size={20} />
-          </button>
-          <button
-            type="button"
-            aria-label="Next project"
-            className="work-next w-10 h-10 rounded border border-slate-800 text-on-surface flex items-center justify-center hover:border-cyan-400 hover:text-cyan-400 transition-colors cursor-pointer"
-          >
-            <FiChevronRight size={20} />
-          </button>
-        </div>
+    <section
+      id="work"
+      className="relative mx-auto mb-[128px] w-full max-w-[1280px] px-[32px]"
+    >
+      {/* Background glow */}
+      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+        <div className="absolute -right-24 bottom-10 h-[320px] w-[320px] rounded-full bg-cyan-400/[0.06] blur-[120px]" />
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="mb-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between"
+      >
+        <div>
+          <p className="flex items-center gap-3 font-label-mono text-[11px] uppercase tracking-[0.24em] text-cyan-400/90">
+            <span className="h-px w-8 bg-cyan-400/60" />
+            Selected work
+          </p>
+          <h2 className="mt-5 font-display-lg text-[34px] leading-[1.1] font-[800] tracking-[-0.025em] text-on-surface md:text-[42px]">
+            Featured Work
+          </h2>
+          <p className="mt-4 max-w-md font-body-md text-[15.5px] leading-[1.75] text-slate-400">
+            Real products, shipped end to end — from interface to database and
+            deploy.
+          </p>
+        </div>
+
+        {/* Counter + controls */}
+        <div className="flex items-center gap-4">
+          <span className="font-label-mono text-[12px] tracking-widest text-slate-500">
+            <span className="text-cyan-400">
+              {String(activeIndex + 1).padStart(2, "0")}
+            </span>{" "}
+            / {String(projects.length).padStart(2, "0")}
+          </span>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              aria-label="Previous project"
+              className="work-prev flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-800 text-on-surface transition-colors hover:border-cyan-400 hover:text-cyan-400"
+            >
+              <FiChevronLeft size={18} />
+            </button>
+            <button
+              type="button"
+              aria-label="Next project"
+              className="work-next flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-800 text-on-surface transition-colors hover:border-cyan-400 hover:text-cyan-400"
+            >
+              <FiChevronRight size={18} />
+            </button>
+          </div>
+        </div>
+      </motion.div>
+
       <Swiper
         modules={[Autoplay, Navigation, Pagination]}
-        spaceBetween={24}
+        spaceBetween={20}
         slidesPerView={1}
         loop={true}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
         navigation={{ prevEl: ".work-prev", nextEl: ".work-next" }}
         pagination={{ clickable: true }}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         breakpoints={{
           640: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
@@ -179,9 +235,9 @@ export default function FeaturedWork() {
         }}
         className="!pb-12"
       >
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <SwiperSlide key={project.id} className="!h-auto">
-            <ProjectCard project={project} />
+            <ProjectCard project={project} index={index} />
           </SwiperSlide>
         ))}
       </Swiper>
