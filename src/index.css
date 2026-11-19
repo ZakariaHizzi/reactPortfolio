@@ -2,6 +2,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @theme {
@@ -93,6 +95,7 @@ body {
   background-color: #020617;
   color: #e6e0e9;
   overflow-x: hidden;
+  overflow-x: clip;
   scroll-behavior: smooth;
   font-family: "Inter", sans-serif;
   margin: 0;

@@ -8,7 +8,7 @@ import { FiArrowUpRight } from "react-icons/fi";
 const GITHUB_URL = "https://github.com/ZakariaHizzi";
 const LINKEDIN_URL = "https://www.linkedin.com/in/zakaria-hizzi-3234a9297/";
 // TODO: replace with your Upwork profile URL
-const UPWORK_URL = "https://www.upwork.com/freelancers/YOUR_PROFILE_ID";
+const UPWORK_URL = "https://www.upwork.com/freelancers/~01d81806a929df40e1";
 
 const projectTypes = ["Landing page", "Web app", "E-commerce", "Redesign"];
 
@@ -67,7 +67,10 @@ export default function Contact() {
       className="relative mx-auto mb-[128px] w-full max-w-[1280px] px-[32px]"
     >
       {/* Background glows */}
-      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        aria-hidden="true"
+      >
         <div className="absolute -left-20 top-0 h-[300px] w-[300px] rounded-full bg-cyan-400/[0.08] blur-[120px]" />
         <div className="absolute -right-16 bottom-0 h-[320px] w-[320px] rounded-full bg-indigo-500/[0.08] blur-[120px]" />
       </div>
@@ -294,7 +297,9 @@ export default function Contact() {
 
               <button
                 type="submit"
-                disabled={!name.trim() || !email.trim() || !message.trim() || sending}
+                disabled={
+                  !name.trim() || !email.trim() || !message.trim() || sending
+                }
                 className="btn-primary group mt-1 inline-flex w-full items-center justify-center gap-2 rounded px-8 py-3.5 font-label-mono text-label-mono uppercase tracking-widest disabled:cursor-not-allowed disabled:opacity-40"
               >
                 {sending ? "Sending..." : "Send message"}

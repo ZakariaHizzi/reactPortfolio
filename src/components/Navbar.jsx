@@ -26,9 +26,9 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-surface-dim/60 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm shadow-primary/5">
-      <div className="flex justify-between items-center w-full px-[32px] py-4 max-w-[1280px] mx-auto">
+      <div className="flex justify-between items-center gap-3 w-full px-4 sm:px-[32px] py-4 max-w-[1280px] mx-auto">
         <a
-          className="group flex items-center gap-3"
+          className="group flex min-w-0 items-center gap-3"
           href="#hero"
           aria-label="Zakaria Hizzi — home"
         >
@@ -47,7 +47,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links — Contact lives in the mobile menu */}
-        <div className="hidden md:flex gap-[16px] items-center font-body-md text-body-md">
+        <div className="hidden md:flex gap-3 lg:gap-4 xl:gap-[20px] items-center whitespace-nowrap font-body-md text-body-md">
           {navLinks.map((link) => (
             <a key={link.href} className={linkClass} href={link.href}>
               {link.label}
@@ -56,7 +56,7 @@ export default function Navbar() {
         </div>
 
         <a
-          className="hidden md:block btn-primary px-6 py-2 rounded font-label-mono text-label-mono uppercase tracking-widest hover:shadow-[0_0_15px_rgba(207,188,255,0.2)] transition-all"
+          className="hidden md:block btn-primary px-5 xl:px-6 py-2 rounded font-label-mono text-label-mono uppercase tracking-widest hover:shadow-[0_0_15px_rgba(207,188,255,0.2)] transition-all whitespace-nowrap"
           href="#contact"
         >
           Hire Me
@@ -64,7 +64,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="md:hidden text-primary p-1"
+          className="md:hidden flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-800 bg-slate-900/40 text-primary transition-colors hover:border-cyan-400/50 hover:text-cyan-300"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
@@ -99,7 +99,7 @@ export default function Navbar() {
               initial="closed"
               animate="open"
               exit="closed"
-              className="flex flex-col gap-1 px-[32px] pb-6 font-body-md text-body-md"
+              className="flex flex-col gap-1 max-h-[calc(100svh-5rem)] overflow-y-auto overscroll-contain px-4 sm:px-[32px] pb-6 pt-1 font-body-md text-body-md"
             >
               {navLinks.map((link) => (
                 <motion.a
