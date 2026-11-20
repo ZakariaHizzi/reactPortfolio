@@ -43,46 +43,8 @@ export default function About() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-60px" }}
-        className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16"
+        className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16"
       >
-        {/* Portrait */}
-        <motion.div variants={item} className="mx-auto w-full max-w-[380px] lg:mx-0">
-          <div className="group relative">
-            {/* Frame glow */}
-            <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-cyan-400/30 via-indigo-500/10 to-transparent opacity-60 blur-[2px] transition-opacity duration-500 group-hover:opacity-100" />
-
-            <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-900 via-slate-900/80 to-slate-950">
-              {/* Subtle grid inside the frame */}
-              <div
-                className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(to_right,rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.08)_1px,transparent_1px)] [background-size:32px_32px]"
-                aria-hidden="true"
-              />
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-slate-950 to-transparent" />
-
-              <img
-                src={me}
-                alt="Zakaria Hizzi — full-stack developer"
-                className="relative aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-            </div>
-
-            {/* Floating projects badge */}
-            <div className="absolute -bottom-5 -right-4 flex items-center gap-3 rounded-xl border border-cyan-400/25 bg-slate-950/90 px-4 py-3 shadow-[0_18px_40px_-20px_rgba(34,211,238,0.55)] backdrop-blur-sm sm:-right-6">
-              <span className="material-symbols-outlined text-[22px] text-cyan-400">
-                rocket_launch
-              </span>
-              <span className="flex flex-col leading-none">
-                <span className="font-display-lg text-[18px] font-[800] text-on-surface">
-                  5+ projects
-                </span>
-                <span className="mt-1 font-label-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">
-                  Designed &amp; built
-                </span>
-              </span>
-            </div>
-          </div>
-        </motion.div>
-
         {/* Copy */}
         <div>
           <motion.p
@@ -148,25 +110,71 @@ export default function About() {
             ))}
           </motion.div>
 
-          {/* Availability */}
+          {/* CTA */}
           <motion.div
             variants={item}
-            className="glass mt-8 rounded-xl border border-slate-800 p-6"
+            className="mt-8 flex flex-col gap-3 sm:flex-row"
           >
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <h3 className="flex items-center gap-2.5 font-body-lg text-[16px] font-bold text-on-surface">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-                </span>
-                Available for new projects
-              </h3>
-              <span className="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 font-label-mono text-[10px] uppercase tracking-[0.16em] text-emerald-300">
-                Open to work
+            <a
+              href="#contact"
+              className="btn-primary inline-flex flex-1 items-center justify-center gap-2 rounded px-6 py-2.5 font-label-mono text-label-mono"
+            >
+              Work with me
+              <span className="material-symbols-outlined text-[18px]">
+                arrow_forward
               </span>
-            </div>
+            </a>
+            <a
+              href="#work"
+              className="btn-ghost inline-flex flex-1 items-center justify-center gap-2 rounded px-6 py-2.5 font-label-mono text-label-mono"
+            >
+              See my projects
+            </a>
+          </motion.div>
+        </div>
 
-            <ul className="mt-5 space-y-3">
+        {/* Portrait + availability — sticky on desktop */}
+        <motion.div
+          variants={item}
+          className="mx-auto w-full max-w-[420px] lg:sticky lg:top-32 lg:mx-0 lg:self-start"
+        >
+          <div className="group relative">
+            {/* Frame glow */}
+            <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-cyan-400/30 via-indigo-500/10 to-transparent opacity-60 blur-[2px] transition-opacity duration-500 group-hover:opacity-100" />
+
+            <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-900 via-slate-900/80 to-slate-950">
+              {/* Subtle grid inside the frame */}
+              <div
+                className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(to_right,rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.08)_1px,transparent_1px)] [background-size:32px_32px]"
+                aria-hidden="true"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-slate-950 to-transparent" />
+
+              <img
+                src={me}
+                alt="Zakaria Hizzi — full-stack developer"
+                className="relative aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+
+              {/* Name plate */}
+              <div className="absolute inset-x-0 bottom-0 p-5">
+                <p className="font-display-lg text-[16px] font-[700] leading-none text-on-surface">
+                  Zakaria Hizzi
+                </p>
+                <p className="mt-1.5 font-label-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">
+                  Full-stack developer
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Availability */}
+          <div className="glass mt-8 rounded-xl border border-slate-800 p-6">
+            <h3 className="font-body-lg text-[16px] font-bold text-on-surface">
+              Working together
+            </h3>
+
+            <ul className="mt-4 space-y-3">
               {availability.map((entry) => (
                 <li
                   key={entry.text}
@@ -179,26 +187,8 @@ export default function About() {
                 </li>
               ))}
             </ul>
-
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#contact"
-                className="btn-primary inline-flex flex-1 items-center justify-center gap-2 rounded px-6 py-2.5 font-label-mono text-label-mono"
-              >
-                Work with me
-                <span className="material-symbols-outlined text-[18px]">
-                  arrow_forward
-                </span>
-              </a>
-              <a
-                href="#work"
-                className="btn-ghost inline-flex flex-1 items-center justify-center gap-2 rounded px-6 py-2.5 font-label-mono text-label-mono"
-              >
-                See my projects
-              </a>
-            </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );
