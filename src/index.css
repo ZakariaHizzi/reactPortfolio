@@ -6,6 +6,11 @@ html {
   overflow-x: clip;
 }
 
+/* Fixed navbar overlays the top of the viewport — keep anchor targets visible */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
 @theme {
   --color-surface-dim: #141218;
   --color-surface: #141218;

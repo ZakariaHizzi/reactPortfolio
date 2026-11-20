@@ -29,13 +29,13 @@ export default function Navbar() {
       <div className="flex justify-between items-center gap-3 w-full px-4 sm:px-[32px] py-4 max-w-[1280px] mx-auto">
         <a
           className="group flex min-w-0 items-center gap-3"
-          href="#hero"
+          href="#about"
           aria-label="Zakaria Hizzi — home"
         >
           {/* Name lockup */}
           <span className="flex flex-col">
             <span className="font-display-lg text-[16px] font-[700] leading-none tracking-[-0.02em] text-on-surface transition-colors duration-300 sm:text-[17px]">
-              Zakaria{" "}
+              Zakaria
               <span className="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
                 Hizzi
               </span>
@@ -82,16 +82,19 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu — animated open/close */}
+      {/* Mobile Menu — animated open/close.
+          Animate with transform/opacity only: animating `height` makes framer-motion
+          measure keyframes, which calls window.scrollTo() and cancels the smooth
+          scroll that a navbar link just started (page stayed put on small screens). */}
       <AnimatePresence initial={false}>
         {menuOpen && (
           <motion.div
             id="mobile-menu"
             key="mobile-menu"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
             className="md:hidden overflow-hidden bg-surface-dim/95 backdrop-blur-xl border-b border-outline-variant/20"
           >
             <motion.div
